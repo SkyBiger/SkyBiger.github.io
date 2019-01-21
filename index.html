@@ -1,1 +1,42 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=keywords content=""><title>联信网络</title><link rel=icon href=static/images/corporate/favicon.ico type=""><link rel=stylesheet type=text/css href=http://at.alicdn.com/t/font_678501_ojresa2p5d7eewmi.css><link rel=stylesheet type=text/css href=http://at.alicdn.com/t/font_573229_17784x9viyvte29.css><script type=text/javascript src="http://api.map.baidu.com/api?v=2.0&ak=VzqGYd7ksV1e1RzqKYUKCWNQeIKv5sMs"></script><link href=/static/css/app.18dda741c7fbf3e56b70607f2fc00b97.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.74fbdb0e217594605a77.js></script><script type=text/javascript src=/static/js/app.147b0af9faba091de579.js></script></body></html>
+---
+layout: page
+description: "Thinking will not overcome fear but action will."
+---
+
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
