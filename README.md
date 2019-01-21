@@ -1,2 +1,2 @@
 # SkyBiger.github.io
-personal website
+personal blog
